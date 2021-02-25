@@ -10,6 +10,8 @@ import android.os.Looper;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.Random;
+
 import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mHandler = new Handler(Looper.getMainLooper());
         mDisposables = new CompositeDisposable();
-        mDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "db")
+        mDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "db" + new Random().nextInt())
                 .build();
         mFirst = findViewById(R.id.first);
         mSecond = findViewById(R.id.second);
